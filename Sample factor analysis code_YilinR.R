@@ -8,17 +8,17 @@
 ############################################################
 library("lavaan")
 
-THI.data <- read.csv("fulldata.csv")  
-#### note: "fulldata.csv" is the complete dataset that have scores for each individual item for all your measurements
-#### in this example, fulldata contains 2 scales, one is THI (with 3 subscales containing 25 items), the other is TFI (with 8 subscales containing 25 items).
+THI.data <- read.csv("Tinnitus_THI_data.csv")  
+#### note: "Tinnitus_THI_data.csv" is the complete dataset that have scores for each individual item/question for the THI scale
+
 
 THI.cfa <- 'Functional =~ F1 + F2 + F4 + F7 + F9 + F12 + F13 + F14 + F15 + F18 + F20 + F24
             Emotional  =~ E3 + E6 + E10 + E16 + E17 + E21 + E22 + E25
             Catastrophic  =~ C5 + C8 + C11 + C19 + C23'
 
-#### note: the sign =~ means the former is measured by the latter ####
-#### F1, F2, F4,.....F24 are the questions measures functional influence in THI scale,
-#### and we need to use them as the exact column names in the "fulldata.csv" file.
+#### note: the sign =~ means the former is measured by the latter 
+#### F1, F2, F4,.....F24 are the questions measures functional influence in THI scale, E stands for Emotional, C stands for Catastrophic 
+#### need to use them as the exact column names in the "Tinnitus_THI_data.csv" file.
 
 
 #run the cfa model using cfa()
@@ -82,7 +82,7 @@ library("GPArotation") #this package enables rotation methods
 library("lavaan")
 library("paran")
 
-TFI_data <- read.csv("fulldata.csv")
+TFI_data <- read.csv("Tinnitus_TFI_data.csv")
 
 # First check the model indices if we set the factors as 8 (since the TFI has 8 subscales)
 efa_result <- fa(TFI_data, nfactors = 8, fm="ml", rotate = "oblimin")
@@ -115,8 +115,3 @@ efa_result2 <- fa(TFI_data, nfactors = 4, fm="ml", rotate = "oblimin") ## Just c
 efa_result2
 
 ##Then we need to check whether the model indices for efa_result2 is better than the original model that has 8 factors.
-
-
-
-
-
