@@ -1,4 +1,4 @@
-# Sample-CFA-and-EFA-RCode
+# Multivariate analysis for a campus client
 I wrote this sample code for a client to help them evaluate the validity of their survey measurements. 
 
 My client have three different scales measuring the influence of tinnitus on patients.
